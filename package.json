@@ -7,6 +7,9 @@
   "author": "Adam Kelly",
   "license": "MIT",
   "dependencies": {
-    "jsonp": "^0.2.1"
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "smmry": "^1.0.1"
   }
 }

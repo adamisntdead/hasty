@@ -1,39 +1,31 @@
-const jsonp = require('jsonp')
+import Deck from './deck'
 
-const smmryKey = '9573A82B94'
-const urlToShorten = 'https://www.britannica.com/biography/Elon-Musk'
-
-const deck = {
-  title: 'Deck Title',
-  loop: false,
-  'theme-font': 'opensans',
-  slides: [
-    {
-      blocks: [
-        {
-          type: 'text',
-          value: 'Deck Title'
-        }
-      ]
-    },
-    {
-      blocks: [
-        {
-          type: 'text',
-          value: 'Thank You',
-          format: 'h1'
-        }
-      ]
-    }
-  ]
-}
-
-document.addEventListener("DOMContentLoaded", () => { 
-  const definitionField = document.getElementById('definition')
-  definitionField.value = JSON.stringify(deck)
-  
-  const data = jsonp(`https://api.smmry.com/&SM_API_KEY=${smmryKey}&SM_URL=${urlToShorten}`);
-  data.then((res) => {
-    console.log(res);
-  });
+document.addEventListener('DOMContentLoaded', () => {
+  const submitButton = document.getElementById('submit-button')
+  submitButton.addEventListener('click', handleSubmit)
 })
+
+function handleSubmit() {
+  const urlToShorten = document.getElementById('url-input').value
+  const deck = new Deck()
+
+  fetch('http://localhost:3000', {
+    method: 'POST',
+    body: JSON.stringify({ url: urlToShorten }),
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+  .then(res => res.json())
+  .then(json => {
+    deck.addTitle(json.sm_api_title)
+
+    json.sm_api_content.forEach(text => deck.addText(text))
+    deck.addHeading('Thank You', 1)
+
+    const definitionField = document.getElementById('definition')
+    definitionField.value = deck.toString()
+    console.log(deck)
+    document.getElementById('definition-form').submit()
+  })
+}
