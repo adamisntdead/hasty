@@ -1,0 +1,12 @@
+{
+  "name": "hasty",
+  "version": "1.0.0",
+  "description": "A Quick Automatic Presentation Generator",
+  "main": "app.js",
+  "repository": "https://github.com/adamisntdead/hasty",
+  "author": "Adam Kelly",
+  "license": "MIT",
+  "dependencies": {
+    "jsonp": "^0.2.1"
+  }
+}
