@@ -3,8 +3,10 @@ const smmry = require('smmry')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 
+require('dotenv').config()
+
 const api = smmry({
-  SM_API_KEY: '9573A82B94',
+  SM_API_KEY: process.env.SM_API_KEY,
   SM_WITH_BREAK: true
 })
 const app = express()

@@ -19,6 +19,7 @@ class App extends Component {
     event.preventDefault()
 
     const deck = new Deck()
+    // Localhost:3000 is the url of the small microservice running to fetch the summarized content
     fetch('http://localhost:3000', {
       method: 'POST',
       body: JSON.stringify({ url: this.state.url }),
