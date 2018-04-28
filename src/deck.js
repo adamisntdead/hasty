@@ -28,10 +28,12 @@ export default class Deck {
 
 function textBlock(value, format) {
   return {
-    blocks: [{
-      type: 'text',
-      value,
-      format
-    }]
+    blocks: [
+      {
+        type: 'text',
+        value,
+        format
+      }
+    ]
   }
 }
