@@ -19,13 +19,19 @@
 Put the following in a `.env` file
 
 ```env
-APIKEY="734hYOURKEYfhdsj"
+SM_API_KEY=YOURKEYHERE
 ```
 
-Then 
+Replacing `YOURKEYHERE` with a [smmry](https://smmry.com/api) API key
+
+Then start the node process
 
 ```shell
-node main https://gradireland.com/careers-advice/job-descriptions/software-engineer  > presentation/js/main.js
+node server
 ```
 
-and the presentation will be in the `presentation` folder
+then start the front-end app
+
+```
+npm run start
+```
