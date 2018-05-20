@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField'
 import Deck from '../deck'
 
 export default class Form extends Component {
@@ -40,34 +38,25 @@ export default class Form extends Component {
         console.log(this.refs)
       })
   }
-  
+
   render() {
     return (
       <div>
-          <TextField
-            id="url"
-            type="url"
-            label="URL"
-            value={this.state.url}
-            onChange={this.handleChange}
-            margin="normal"
-          />
-          <Button variant="raised" color="primary" onClick={this.handleSubmit}>
-            Create Presentation
-          </Button>
+        <input type="url" id="url"  value={this.state.url} onChange={this.handleChange} />
+        <button onClick={this.handleSubmit}>Create Presentation</button>
 
-          <form
-            ref="slidesForm"
-            action="https://slides.com/decks/define"
-            method="POST"
-            target="_blank"
-          >
-            <input
-              type="hidden"
-              value={this.state.presentation}
-              name="definition"
-            />
-          </form>
+        <form
+          ref="slidesForm"
+          action="https://slides.com/decks/define"
+          method="POST"
+          target="_blank"
+        >
+          <input
+            type="hidden"
+            value={this.state.presentation}
+            name="definition"
+          />
+        </form>
       </div>
     )
   }
